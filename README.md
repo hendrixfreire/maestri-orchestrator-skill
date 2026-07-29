@@ -1,6 +1,6 @@
 # Maestri Orchestrator Skill
 
-A model-agnostic orchestration skill for agents acting as the Maestro inside a Maestri canvas. It follows the open [Agent Skills specification](https://agentskills.io/specification), so compatible runtimes can load the same repository without provider-specific prompt formats.
+A model-agnostic orchestration skill for agents acting as the Maestro inside a Maestri canvas. It follows the open [Agent Skills specification](https://agentskills.io/specification), so different compatible agent runtimes hosted inside Maestri can load the same repository without provider-specific prompt formats. It is not an orchestration skill for sessions running outside Maestri.
 
 It turns the Maestro into a coordination layer rather than an implementation agent. The Maestro writes contracts, partitions work, recruits from the presets actually available in the workspace, maintains traceability, delegates execution, and integrates evidence. A dedicated `git-master` agent owns all Git and GitHub operations.
 
@@ -31,7 +31,9 @@ It turns the Maestro into a coordination layer rather than an implementation age
 
 ## Installation
 
-Install the repository as a global skill using the skill directory supported by your agent runtime. The installed directory must preserve `SKILL.md`, `references/`, and `templates/` together.
+To make the skill available to every compatible agent that a runtime launches inside Maestri, install it in that runtime's user/global skill scope when supported. Runtimes that expose only project- or workspace-scoped skills require installation in each relevant scope.
+
+The installed directory must be named exactly `maestri-orchestrator-skill` because the Agent Skills specification requires the parent directory to match the `name` field. Preserve `SKILL.md`, `references/`, and `templates/` together.
 
 Examples:
 
@@ -39,11 +41,12 @@ Examples:
 # Clone to a temporary or permanent location
 git clone https://github.com/hendrixfreire/maestri-orchestrator-skill.git
 
-# Copy or symlink the repository into your runtime's global skills directory
-# The destination varies by agent; consult that runtime's skill documentation.
+# Copy or symlink the whole repository as a directory named
+# maestri-orchestrator-skill in the runtime's supported skill scope.
+# The parent path varies by agent; consult that runtime's documentation.
 ```
 
-No specific agent runtime, provider, or preset is required. The executing environment must expose the `maestri` CLI and Maestro Mode.
+No specific agent runtime, provider, or preset is required. Activation is valid only for an agent terminal running inside Maestri with the `maestri` CLI and Maestro Mode available.
 
 ## Optional discovery skills
 

@@ -97,6 +97,6 @@ A cycle is complete only when:
 - acceptance criteria have evidence;
 - blockers have no unanswered item;
 - autonomous decisions are recorded;
-- an independent validator has checked critical work where practical;
+- an independent validation agent has checked every critical deliverable;
 - `git-master` has reported exact repository state and gate results;
 - no external action is pending without explicit user approval.

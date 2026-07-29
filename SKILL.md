@@ -136,6 +136,8 @@ Recruit `git-master` early enough to:
 - prepare PR title and description, then pause for explicit user approval before opening the PR;
 - never merge, force-push, deploy, publish, or perform destructive Git operations without explicit user authorization.
 
+`git-master` is an executor for context and traceability purposes. Create `spec-git-master` and `tasks-git-master`, connect them with the project specification and both traceability notes, and name all five references explicitly in its role.
+
 Implementation agents must not stage, commit, push, open PRs, merge, manipulate remotes, or publish releases. Their role instructs them to notify `git-master` when an owned task is ready, including changed paths and validation evidence. Connect implementation agents to `git-master` when direct handoff is needed.
 
 The Maestro does not run Git or GitHub commands. It coordinates the handoff and integrates the resulting reports into the orchestration notes.
@@ -216,7 +218,7 @@ For decisions reserved for the user:
 
 The Maestro integrates reports, contracts, orchestration documents, and team/canvas configuration. It does not modify product code, run builds or tests, execute repository commands, or take over an executor's task.
 
-Delegate validation to a suitable independent agent when possible. The producing executor does not get sole authority to certify its own work. Require real outputs for acceptance gates.
+Delegate all validation execution to a suitable agent; the Maestro never runs validation commands. Critical work must be checked by an independent validation agent, not solely by the producing executor. Require real outputs for acceptance gates.
 
 Before closing a cycle:
 
