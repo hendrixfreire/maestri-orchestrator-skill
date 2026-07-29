@@ -4,6 +4,11 @@ A model-agnostic orchestration skill for agents acting as the Maestro inside a M
 
 It turns the Maestro into a coordination layer rather than an implementation agent. The Maestro writes contracts, partitions work, recruits from the presets actually available in the workspace, maintains traceability, delegates execution, and integrates evidence. A dedicated `git-master` agent owns all Git and GitHub operations.
 
+The repository ships the same operating contract in two forms:
+
+- `SKILL.md` — progressively disclosed Agent Skill with templates and references;
+- `SYSTEM_PROMPT.md` — self-contained system prompt for agent runtimes or Maestri presets that accept a prompt directly.
+
 ## Design principles
 
 - Model- and provider-agnostic: no model names, commands, effort levels, or permission-bypass flags are prescribed.
@@ -17,7 +22,9 @@ It turns the Maestro into a coordination layer rather than an implementation age
 
 ```text
 .
+├── README.md
 ├── SKILL.md
+├── SYSTEM_PROMPT.md
 ├── references/
 │   └── operating-contract.md
 └── templates/
@@ -47,6 +54,12 @@ git clone https://github.com/hendrixfreire/maestri-orchestrator-skill.git
 ```
 
 No specific agent runtime, provider, or preset is required. Activation is valid only for an agent terminal running inside Maestri with the `maestri` CLI and Maestro Mode available.
+
+## System prompt usage
+
+Use the complete contents of `SYSTEM_PROMPT.md` as the system prompt for the terminal configured as Maestro. The file is self-contained: it does not require the runtime to support Agent Skills or load the repository's templates.
+
+Do not assign this prompt to implementation agents. Their roles are created by the Maestro from the project contract and ownership boundaries.
 
 ## Optional discovery skills
 

@@ -4,7 +4,7 @@ description: Orchestrate multi-agent work inside Maestri. Use when acting as the
 license: MIT
 compatibility: Requires a Maestri workspace with Maestro Mode and the maestri CLI.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   category: orchestration
 ---
 
